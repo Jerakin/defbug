@@ -1,0 +1,12 @@
+key_trigger {
+  input: KEY_9
+  action: "toggle_info"
+}
+key_trigger {
+  input: KEY_8
+  action: "toggle_essentials"
+}
+mouse_trigger {
+  input: MOUSE_BUTTON_1
+  action: "touch"
+}

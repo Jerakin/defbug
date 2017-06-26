@@ -1,0 +1,26 @@
+[project]
+title = Empty project
+
+[bootstrap]
+main_collection = /main/main.collectionc
+render = /game_config/game.renderc
+
+[input]
+game_binding = /game_config/game.input_bindingc
+
+[display]
+width = 720
+height = 1280
+
+[script]
+shared_state = 1
+
+[ios]
+bundle_identifier = com.example.todo
+
+[osx]
+bundle_identifier = com.example.todo
+
+[graphics]
+texture_profiles = /game_config/game.texture_profilesc
+

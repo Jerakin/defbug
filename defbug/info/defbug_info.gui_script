@@ -1,0 +1,14 @@
+
+
+function init(self)
+	local connectivity = {"NETWORK_DISCONNECTED", "NETWORK_CONNECTED", "NETWORK_CONNECTED_CELLULAR"}
+	gui.set_text(gui.get_node("app_version"), "App Version: " .. tostring(sys.get_config("project.version") or "1.0"))
+	gui.set_text(gui.get_node("connected"), "Connected: " .. connectivity[sys.get_connectivity() + 1])
+	gui.set_text(gui.get_node("def_version"), "Engine Version: " .. sys.get_engine_info().version)
+	gui.set_text(gui.get_node("def_sha"), "Engine sha: " .. sys.get_engine_info().version_sha1)
+	gui.set_text(gui.get_node("device_w"), "Device Width: " .. sys.get_config("display.width"))
+	gui.set_text(gui.get_node("device_h"), "Device Height: " .. sys.get_config("display.height"))
+	gui.set_text(gui.get_node("language"), "Language: " .. sys.get_sys_info().language)
+	gui.set_text(gui.get_node("device_language"), "Device Langauge: " .. sys.get_sys_info().device_language)
+	gui.set_text(gui.get_node("territory"), "Territory: " .. sys.get_sys_info().territory)
+end
