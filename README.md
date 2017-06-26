@@ -1,2 +1,2 @@
-# defold-empty
-Empty Defold project
+# DefBug
+For adding some general debug information
