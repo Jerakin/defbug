@@ -21,7 +21,7 @@ embedded_instances {
   "  }\n"
   "}\n"
   "embedded_components {\n"
-  "  id: \"essentials\"\n"
+  "  id: \"details\"\n"
   "  type: \"collectionproxy\"\n"
   "  data: \"collection: \\\"/defbug/essentials/defbuf_essentials.collection\\\"\\n"
   "exclude: false\\n"

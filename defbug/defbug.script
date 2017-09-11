@@ -1,32 +1,11 @@
 local defbug = require "defbug.defbug"
 
-
-local essential_is_toggled = false
-local info_is_toggled = false
+function init(self)
+	defbug.url = msg.url()
+end
 
 function on_message(self, message_id, message, sender)
-	print(message_id)
-	if message_id == defbug.messages.TOGGLE_ESSENTIALS then
-		
-		local _url = "/scenes#essentials"
-		if essential_is_toggled then
-			msg.post(_url, "unload") 
-		else
-			msg.post(_url, "async_load")
-		end
-		essential_is_toggled = not essential_is_toggled
-		
-	elseif message_id == defbug.messages.TOGGLE_INFO then
-		local _url = "/scenes#info"
-		if info_is_toggled then
-			msg.post(_url, "unload") 
-		else
-			msg.post(_url, "async_load") 
-			
-		end
-		info_is_toggled = not info_is_toggled
-		
-	elseif message_id == hash("proxy_loaded") then
+	if message_id == hash("proxy_loaded") then
 		msg.post(sender, "enable")
 	end
 end

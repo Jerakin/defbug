@@ -5,16 +5,6 @@ function init(self)
 	msg.post("/go#defbug", "load")
 end
 
-function final(self)
-	-- Add finalization code here
-	-- Remove this function if not needed
-end
-
-function update(self, dt)
-	-- Add update code here
-	-- Remove this function if not needed
-end
-
 function on_message(self, message_id, message, sender)
 	if message_id == hash("proxy_loaded") then
         msg.post(sender, "enable")
@@ -22,14 +12,5 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
-	if action_id == hash("toggle_essentials") and action.released then
-		msg.post("defbug:/load", defbug.messages.TOGGLE_ESSENTIALS)
-	elseif action_id == hash("toggle_info") and action.released then
-		msg.post("defbug:/load", defbug.messages.TOGGLE_INFO)
-	end
-end
-
-function on_reload(self)
-	-- Add reload-handling code here
-	-- Remove this function if not needed
+	defbug.on_input(action_id,action)
 end
