@@ -1,14 +1,61 @@
+local defbug = require "defbug.defbug"
+
+local function tick_fps(self)
+	local tick = socket.gettime() * 1000
+
+	if tick - self.last_tick >= 1000 then
+		self.frame_rate_last = self.frame_rate
+		self.frame_rate = 0
+		self.last_tick = tick
+	end
+	
+	self.frame_rate = self.frame_rate + 1
+end
+
+
+local function update_memory(self, dt)
+	self.update_memory_timer = self.update_memory_timer - dt
+	if self.update_memory_timer <= 0.0 then
+		self.update_memory_timer = defbug.UPDATE_MEMORY_INTERVAL
+		
+		local lua_memory_usage = (collectgarbage("count") / 1024)
+		lua_memory_usage = math.floor(lua_memory_usage * 100 + 0.5) / 100
+		gui.set_text(self.text_lua_memory, "Lua Mem: " .. tostring(lua_memory_usage) .. " MB")
+		
+		local total_memory_usage = (profiler.get_memory_usage() / 1048576)
+		total_memory_usage = math.floor(total_memory_usage * 100 + 0.5) / 100
+		gui.set_text(self.text_total_memory, "Total Mem: " .. tostring(total_memory_usage) .. " MB")
+	end
+end
+
+
+local function update_cpu(self)
+	local cpu_usage = profiler.get_cpu_usage()
+	cpu_usage =  string.format("CPU: %." .. 3 .. "f", cpu_usage)
+	gui.set_text(self.text_cpu, cpu_usage)
+end
 
 
 function init(self)
-	local connectivity = {"NETWORK_DISCONNECTED", "NETWORK_CONNECTED", "NETWORK_CONNECTED_CELLULAR"}
-	gui.set_text(gui.get_node("app_version"), "App Version: " .. tostring(sys.get_config("project.version") or "1.0"))
-	gui.set_text(gui.get_node("connected"), "Connected: " .. connectivity[sys.get_connectivity() + 1])
-	gui.set_text(gui.get_node("def_version"), "Engine Version: " .. sys.get_engine_info().version)
-	gui.set_text(gui.get_node("def_sha"), "Engine sha: " .. sys.get_engine_info().version_sha1)
-	gui.set_text(gui.get_node("device_w"), "Device Width: " .. sys.get_config("display.width"))
-	gui.set_text(gui.get_node("device_h"), "Device Height: " .. sys.get_config("display.height"))
-	gui.set_text(gui.get_node("language"), "Language: " .. sys.get_sys_info().language)
-	gui.set_text(gui.get_node("device_language"), "Device Langauge: " .. sys.get_sys_info().device_language)
-	gui.set_text(gui.get_node("territory"), "Territory: " .. sys.get_sys_info().territory)
+	gui.set_render_order(defbug.RENDER_ORDER)
+    self.last_tick = os.clock()
+	self.frame_rate_last = 0
+	self.frame_rate = 0	
+	self.update_memory_timer = 0
+	
+	self.text_cpu = gui.get_node("cpu")
+    self.text_fps = gui.get_node("fps")
+    self.text_lua_memory = gui.get_node("lua")
+    self.text_total_memory = gui.get_node("mem")
+    self.text_ms = gui.get_node("ms")
 end
+
+
+function update(self, dt)
+	tick_fps(self)
+	gui.set_text(self.text_fps, "FPS: " .. tostring(self.frame_rate_last) )
+	gui.set_text(self.text_ms, string.format("MS: %." .. 4 .. "f", dt))
+	update_memory(self, dt)
+	update_cpu(self)
+end
+
