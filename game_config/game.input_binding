@@ -6,6 +6,10 @@ key_trigger {
   input: KEY_8
   action: "defbug_details"
 }
+key_trigger {
+  input: KEY_0
+  action: "toggle_profile"
+}
 mouse_trigger {
   input: MOUSE_BUTTON_1
   action: "touch"

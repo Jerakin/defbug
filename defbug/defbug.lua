@@ -7,6 +7,7 @@ M.UPDATE_MEMORY_INTERVAL = 0.5
 
 M.DETAILS = hash("defbug_details")
 M.INFO = hash("defbug_info")
+M.PROFILER = hash("toggle_profile")
 
 M.url = nil
 
@@ -17,10 +18,7 @@ local info_is_toggled = false
 local config = {}
 
 local function toggle_details()
-	pprint(M.url.socket)
-	
 	local _url = msg.url(M.url.socket, "/scenes", "details")
-	pprint(_url)
 	if essential_is_toggled then
 		msg.post(_url, "unload") 
 	else
@@ -50,15 +48,9 @@ function M.on_input(action_id, action)
 		toggle_details()
 	elseif action_id == M.INFO and action.released then
 		toggle_info()
+	elseif action_id == M.PROFILER and action.released then
+		msg.post("@system:", "toggle_profile")
 	end
-end
-
-function M.on_message(message_id, message, sender)
-
-end
-
-function M.update()
-	
 end
 
 return M

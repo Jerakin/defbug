@@ -65,8 +65,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
-    y: 0.0
+    x: -5.0
+    y: -45.0
     z: 0.0
     w: 1.0
   }
@@ -120,8 +120,8 @@ nodes {
 }
 nodes {
   position {
-    x: -5.0
-    y: -5.0
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -184,7 +184,7 @@ nodes {
 nodes {
   position {
     x: -300.0
-    y: -5.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -247,8 +247,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
-    y: -65.0
+    x: -5.0
+    y: -110.0
     z: 0.0
     w: 1.0
   }
@@ -303,7 +303,7 @@ nodes {
 nodes {
   position {
     x: -300.0
-    y: -45.0
+    y: -40.0
     z: 0.0
     w: 1.0
   }
@@ -366,7 +366,7 @@ nodes {
 nodes {
   position {
     x: -300.0
-    y: -5.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -429,8 +429,8 @@ nodes {
 }
 nodes {
   position {
-    x: -300.0
-    y: -175.0
+    x: -305.0
+    y: -210.0
     z: 0.0
     w: 1.0
   }

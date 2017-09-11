@@ -77,8 +77,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 0.95
+    y: 0.95
     z: 1.0
     w: 1.0
   }
@@ -96,9 +96,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Connected: NETWORK_DISCONNECTED"
+  text: "Engine sha: 0060183cce2e29dbd09c85ece83cbb72068ee050"
   font: "SourceCodePro"
-  id: "connected"
+  id: "def_sha"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_NW
@@ -203,8 +203,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.95
-    y: 0.95
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -222,9 +222,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Engine sha: 0060183cce2e29dbd09c85ece83cbb72068ee050"
+  text: "App Version:  "
   font: "SourceCodePro"
-  id: "def_sha"
+  id: "app_version"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_NW
@@ -600,9 +600,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "App Version:  "
+  text: "Connected: NETWORK_DISCONNECTED"
   font: "SourceCodePro"
-  id: "app_version"
+  id: "connected"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_NW
