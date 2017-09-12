@@ -28,5 +28,5 @@ texture_profiles = /game_config/game.texture_profiles
 package = com.jerakin.defbug
 
 [library]
-include_dirs = /defbug
+include_dirs = defbug
 
