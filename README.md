@@ -12,4 +12,4 @@ Once you have added the dependency to your project all you need to do is
 * Add `defbug/defbug.collection` to your game 
 * Load and Enable the collection in a script
 * Add `defbug.on_input(action_id, action)` in your main script
-* Add `debug_details`, `debug_info` and `toggle_profile` in your input_bindings
+* Add `defbug_details`, `defbug_info` and `toggle_profile` in your input_bindings
