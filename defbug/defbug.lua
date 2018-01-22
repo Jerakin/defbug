@@ -53,8 +53,6 @@ function M.toggle_info()
 	return info_is_toggled
 end
 
-end
-
 function M.on_input(action_id, action)
 	if action_id == M.DETAILS and action.released then
 		M.toggle_details()
