@@ -1,4 +1,4 @@
-
+local defbug = require "defbug.defbug"
 
 function init(self)
 	local connectivity = {"NETWORK_DISCONNECTED", "NETWORK_CONNECTED", "NETWORK_CONNECTED_CELLULAR"}
@@ -11,4 +11,11 @@ function init(self)
 	gui.set_text(gui.get_node("language"), "Language: " .. sys.get_sys_info().language)
 	gui.set_text(gui.get_node("device_language"), "Device Langauge: " .. sys.get_sys_info().device_language)
 	gui.set_text(gui.get_node("territory"), "Territory: " .. sys.get_sys_info().territory)
+	gui.set_position(gui.get_node("root"), vmath.vector3(0, defbug.HEIGHT, 0))
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("update_dimensions") then
+		gui.set_position(gui.get_node("root"), vmath.vector3(0, message.height, 0))
+	end
 end

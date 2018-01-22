@@ -44,10 +44,12 @@ function init(self)
 	self.update_memory_timer = 0
 	
 	self.text_cpu = gui.get_node("cpu")
-    self.text_fps = gui.get_node("fps")
-    self.text_lua_memory = gui.get_node("lua")
-    self.text_total_memory = gui.get_node("mem")
-    self.text_ms = gui.get_node("ms")
+	self.text_fps = gui.get_node("fps")
+	self.text_lua_memory = gui.get_node("lua")
+	self.text_total_memory = gui.get_node("mem")
+	self.text_ms = gui.get_node("ms")
+	
+	gui.set_position(gui.get_node("root"), vmath.vector3(defbug.WIDTH, defbug.HEIGHT, 0))
 end
 
 
@@ -59,3 +61,8 @@ function update(self, dt)
 	update_cpu(self)
 end
 
+function on_message(self, message_id, message, sender)
+	if message_id == hash("update_dimensions") then
+		gui.set_position(gui.get_node("root"), vmath.vector3(message.width, message.height, 0))
+	end
+end

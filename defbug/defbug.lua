@@ -14,10 +14,23 @@ M.url = nil
 local essential_is_toggled = false
 local info_is_toggled = false
 
+M.WIDTH = 720
+M.HEIGHT = 1280
 
 local config = {}
 
-local function toggle_details()
+function M.set_width_height(w, h)
+	M.WIDTH = w
+	M.HEIGHT = h
+	if info_is_toggled then
+		msg.post(msg.url(M.url.socket, "/scenes", "info"), "update_dimensions", {width=w, height=h})
+	end
+	if essential_is_toggled then
+		msg.post(msg.url(M.url.socket, "/scenes", "details"),"update_dimensions", {width=w, height=h})
+	end
+end
+
+function M.toggle_details()
 	local _url = msg.url(M.url.socket, "/scenes", "details")
 	if essential_is_toggled then
 		msg.post(_url, "unload") 
@@ -25,9 +38,10 @@ local function toggle_details()
 		msg.post(_url, "async_load")
 	end
 	essential_is_toggled = not essential_is_toggled
+	return essential_is_toggled
 end
 
-local function toggle_info()
+function M.toggle_info()
 	local _url = msg.url(M.url.socket, "/scenes", "info")
 	if info_is_toggled then
 		msg.post(_url, "unload") 
@@ -36,18 +50,16 @@ local function toggle_info()
 		
 	end
 	info_is_toggled = not info_is_toggled
+	return info_is_toggled
 end
 
-
-function M.toggle_info()
-	msg.post(info_url, "async_load")
 end
 
 function M.on_input(action_id, action)
 	if action_id == M.DETAILS and action.released then
-		toggle_details()
+		M.toggle_details()
 	elseif action_id == M.INFO and action.released then
-		toggle_info()
+		M.toggle_info()
 	elseif action_id == M.PROFILER and action.released then
 		msg.post("@system:", "toggle_profile")
 	end
