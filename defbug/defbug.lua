@@ -1,5 +1,3 @@
-
-
 local M = {}
 
 M.RENDER_ORDER = 15
@@ -11,6 +9,7 @@ M.PROFILER = hash("toggle_profile")
 
 M.url = nil
 
+local path  ="/defbug/scenes"
 local essential_is_toggled = false
 local info_is_toggled = false
 
@@ -31,7 +30,7 @@ function M.set_width_height(w, h)
 end
 
 function M.toggle_details()
-	local _url = msg.url(M.url.socket, "/scenes", "details")
+	local _url = msg.url(M.url.socket, path, "details")
 	if essential_is_toggled then
 		msg.post(_url, "unload") 
 	else
@@ -42,7 +41,7 @@ function M.toggle_details()
 end
 
 function M.toggle_info()
-	local _url = msg.url(M.url.socket, "/scenes", "info")
+	local _url = msg.url(M.url.socket, path, "info")
 	if info_is_toggled then
 		msg.post(_url, "unload") 
 	else
